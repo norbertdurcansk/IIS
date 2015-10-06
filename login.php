@@ -1,10 +1,12 @@
 <?php
 // page2.php
 session_start();
-if (isset($_SESSION['user_id'])) {
 
+if(isset($_SESSION['user_id']))
+{
 header('location:home.php');
-} 
+}
+
 ?>
 <html>                
   <head>                          
@@ -113,7 +115,7 @@ $('#logout').on({
     </div>                                                     
     <div id="page">                      
       <div id="container">              
-        <form action="login_submit.php">   
+        <form action="login_submit.php" method="post">   
                <img src="login_text.png" alt="login_text.png, 9,3kB" title="login_text" border="0" height="42" width="230">
                <br>
                                                                                                                                                                      

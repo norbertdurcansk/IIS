@@ -6,6 +6,8 @@ body {
 }
 a {
 text-decoration: none;
+color:black;
+
 
 }
 #welcome {
@@ -78,8 +80,10 @@ text-decoration: none;
 	height: 1500px;
 	min-width: 900px;
 	max-width: 1500px;
-	 // border: 2px solid red;
+	//  border: 2px solid red;
+//margin-top: -40px;
 }
+
 #actionpanel {
 
 	width: 450px;
@@ -243,7 +247,7 @@ background-size:cover;
    
    width: 100%;
    height: 50px;
-   //border: 2px solid red ;
+ //  border: 2px solid red ;
    text-align: left;
    background: #10719a ;
    border-radius:10px;
@@ -295,6 +299,9 @@ margin-top: 20px;
 
 .todaylist
 {
+font-family: Sans-serif;
+font-size: 11pt;
+line-height: 140%;
 margin: 0 auto;
 width: 80%;
 margin-top: 10px;
@@ -304,7 +311,8 @@ height: 60px;
 }
 .todaylist:hover
 {
-background: #0ff4f3;
+background: #4ac6fc;
+
 
 }
 
@@ -339,5 +347,10 @@ float: left;
 width:150px;
 height: 100%;               
 
+
+}
+.tick{
+margin-top: 25px;
+float: left;
 
 }

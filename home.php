@@ -1,9 +1,12 @@
 <?php
 // page2.php
 session_start();
-if (!isset($_SESSION['user_id'])) {
+
+if(!isset($_SESSION['user_id']))
+{
 header('location:login.php');
-} 
+}
+
 ?>
 <html>                
   <head>                          
@@ -174,6 +177,10 @@ $('#logout').on({
    
 }); 
       }); 
+   
+      
+      
+      
  </script>                               
   <body>                                  
     <div id="head_container_logo">                                           
@@ -230,7 +237,8 @@ $('#logout').on({
             <span id="Plan" >Dnesny rozvrh:
       </span> 
       <br>
-      
+ <!-- start of the insert section -->
+ <a href="pacient.php?id=01211121">     
  <div id="content_todaylist">     
         <div class="todaylist">   
         <div class="right_list">
@@ -245,11 +253,14 @@ $('#logout').on({
         <div class="corner_list">
         <b>Bydlisko: </b>Kolejni10<br>
         <b>Alergie: </b>X                                       <br>
-        Vysetrenie je <span class="green">platene</span>
-        
+        Vysetrenie je <span class="green">platene</span>   
           
-        </div>                       
+        </div>
+        
+                               
       </div> 
+      </a>
+      <a href="pacient.php?id=01211121">   
               <div class="todaylist">   
         <div class="right_list">
         <span class="green">Kontrola</span>
@@ -268,6 +279,7 @@ $('#logout').on({
           
         </div>                       
       </div> 
+      </a>
       
       
       
