@@ -231,16 +231,47 @@ $('#logout').on({
       </span> 
       <br>
       
-      <div id="content_todaylist">
-     <div class="todaylist">
-     </div>
-           <div class="todaylist">
-     </div>
-     <div class="todaylist">
-     </div>
-     <div class="todaylist">
-     </div>
-       
+ <div id="content_todaylist">     
+        <div class="todaylist">   
+        <div class="right_list">
+        <span class="green">Vysetrenie</span>
+        </div>
+        <div class="left_list">
+        <b>Meno:</b> Norbert Durcansky    <br>
+        <b>Pohlavie:</b> muz               <br>
+        <b>Rod.c.: </b>95sas <br>
+        
+        </div>
+        <div class="corner_list">
+        <b>Bydlisko: </b>Kolejni10<br>
+        <b>Alergie: </b>X                                       <br>
+        Vysetrenie je <span class="green">platene</span>
+        
+          
+        </div>                       
+      </div> 
+              <div class="todaylist">   
+        <div class="right_list">
+        <span class="green">Kontrola</span>
+        </div>
+        <div class="left_list">
+        <b>Meno:</b> Norbert Durcansky    <br>
+        <b>Pohlavie:</b> muz               <br>
+        <b>Rod.c.: </b>95sas <br>
+        
+        </div>
+        <div class="corner_list">
+        <b>Bydlisko: </b>Kolejni10<br>
+        <b>Alergie: </b>X                                       <br>
+        Vysetrenie je <span class="green">platene</span>
+        
+          
+        </div>                       
+      </div> 
+      
+      
+      
+                            
      </div>
                                                                    
     
