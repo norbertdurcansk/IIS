@@ -1,11 +1,20 @@
 
 <?php
 // page2.php
-
 session_start();
-if (!isset($_SESSION['user_id'])) {
 
+if(!isset($_SESSION['user_id']))
+{
 header('location:login.php');
+}
+
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // last request was more than 30 minutes ago
+    session_unset();     // unset $_SESSION variable for the run-time 
+    session_destroy();   // destroy session data in storage
+    header('location:login.php');
 } 
 ?>
 <html>             
@@ -232,10 +241,32 @@ $('#logout').on({
         <img src="hospital_imge_text.png" alt="hospital_imge_text.png, 30kB" title="hospital_imge_text" height="30" width="180">                                                      
       </div>                                  
       <div id="right_side">                             
-        <div id="name"><b>NORBERT DURCANSKY</b>          
-          <br>Chirurg         
-        </div>                 
-        <img id="avatar" src="avatar_male.jpg" alt="avatar_male.jpg, 23kB" title="avatar_male" height="60px" width="70px">                 
+<?php
+      if ($_SESSION['role']=="admin"){                                    
+        echo '<div id="name"><B>ADMIN</B><BR>FULL RIGHTS'; 
+                                    }
+          elseif($_SESSION['role']=="lekar")
+          {
+            echo '<DIV id="name"><b>'.strtoupper($_SESSION['firstname']).' '.strtoupper($_SESSION['surname']).'</b><BR><span class="green">lekar</span>'; 
+          } 
+          elseif($_SESSION['role']=="sestra")
+          {
+            echo '<DIV id="name"><B>'.strtoupper($_SESSION['firstname']).' '.strtoupper($_SESSION['surname']).'</B><BR><span class="green">sestra</span>'; 
+          }                        
+                    ?>                                   
+      </DIV>                   
+<?php  
+        
+        if ($_SESSION['role']=="admin"){ 
+         echo '<img id="avatar" src="avatar_male.jpg" alt="avatar_male.jpg, 23kB" title="avatar_male" height="60px" width="70px">' ;
+        }
+        elseif ($_SESSION['sex']=="muz"){
+                               
+        echo '<IMG id="avatar" src="avatar_male.jpg" alt="avatar_male.jpg, 23kB" title="avatar_male" height="60px" width="70px">' ;
+              }
+              else
+              {echo '<IMG id="avatar" src="avatar_female.jpg" alt="avatar_female.jpg, 23kB" title="avatar_male" height="60px" width="70px">' ;}
+                   ?>                         
                <a href="profil.php">           
             <img src="profil.jpg" id="profil_button"  alt="settings_button_clicked.jpg, 51kB" title="settings_button_clicked" height="60" width="100">                         
               </a>                   

@@ -1,0 +1,169 @@
+﻿CREATE TABLE admin(
+heslo VARCHAR(100),
+login VARCHAR(12),
+person_id INT
+)ENGINE=InnoDB;
+
+CREATE TABLE sestra(
+rodne_cislo BIGINT,
+meno VARCHAR(20),
+priezvisko VARCHAR(25),
+pohlavie VARCHAR(10),
+datum_narodenia DATE,
+bydlisko VARCHAR(25),
+id_cislo_oddelenie INT,
+cislo_sestry INT,
+heslo VARCHAR(100),
+login VARCHAR(12)
+)
+ENGINE=InnoDB;
+
+CREATE TABLE oddelenie(
+id_cislo  INT,
+nazov VARCHAR(20),
+lozkova_kapacita INT,
+primar VARCHAR(30),
+prednosta VARCHAR(30)
+)ENGINE=InnoDB;
+
+CREATE TABLE pracuje_na(
+uvazok VARCHAR(20),
+telefon INT,
+rodne_cislo_lekar INT,
+id_cislo_oddelenie INT 
+)ENGINE=InnoDB;
+
+CREATE TABLE hospitalizacia(
+id_cislo INT,
+datum_prijatia DATE,
+datum_prepustenia DATE,
+rodne_cislo_pacient INT,
+id_cislo_oddelenie INT
+)ENGINE=InnoDB;
+
+CREATE TABLE vysetrenie(
+id_cislo  INT,
+datum DATE,
+id_cislo_hospitalizacia INT
+)ENGINE=InnoDB;
+
+CREATE TABLE pacient(
+rodne_cislo BIGINT,
+meno VARCHAR(20),
+priezvisko VARCHAR(30),
+datum_narodenia DATE,
+pohlavie VARCHAR(10),
+trvale_bydlisko VARCHAR(30),
+alergie VARCHAR(20) ,
+rodne_cislo_lekar INT
+)ENGINE=InnoDB;
+
+CREATE TABLE platene(
+sposob_platby VARCHAR(10),
+id_cislo_vysetrenie INT
+)ENGINE=InnoDB;
+
+CREATE TABLE neplatene(
+cislo_poistovne INT,
+id_cislo_vysetrenie INT
+)ENGINE=InnoDB;
+
+CREATE TABLE lekar(
+rodne_cislo BIGINT,
+meno VARCHAR(20),
+priezvisko VARCHAR(30),
+titul VARCHAR(20),
+datum_narodenia DATE,
+pohlavie VARCHAR(10),
+trvale_bydlisko VARCHAR(30),
+specializacia VARCHAR(20),
+heslo VARCHAR(100),
+login VARCHAR(12)
+)ENGINE=InnoDB;
+
+CREATE TABLE uziva(
+kedy VARCHAR(10),
+kolko_krat INT,
+pocet_tabliet INT,
+rodne_cislo_pacient INT,
+cislo_sarze INT
+)ENGINE=InnoDB;
+
+CREATE TABLE liek(
+cislo_sarze INT,
+nazov VARCHAR(20),
+druh VARCHAR(20),
+ucinna_latka VARCHAR(20),
+mnozstvo_ucinnej_latky INT,
+kontraindikacie VARCHAR(20) 
+)ENGINE=InnoDB;
+
+INSERT INTO oddelenie (id_cislo, nazov, lozkova_kapacita, primar, prednosta) VALUES (10, 'Interni', 20, 'Michal Mucha', 'Ivan Vesely');
+INSERT INTO oddelenie (id_cislo, nazov, lozkova_kapacita, primar, prednosta) VALUES (11, 'Ocni', 3, 'Jan Ostrovid', 'Milos Okular');
+INSERT INTO oddelenie (id_cislo, nazov, lozkova_kapacita, primar, prednosta) VALUES (12, 'Kardiovaskularni', 12, 'Petr Srdecny', 'Lucia Silna');
+
+INSERT INTO sestra (rodne_cislo, meno, priezvisko, pohlavie, datum_narodenia, bydlisko, id_cislo_oddelenie, cislo_sestry, heslo, login) VALUES ('8161270425', 'Erika', 'Rychla', 'zena', '1981-10-20', 'Hlavna 125 Olomouc', '11', '01', SHA1('sestra01heslo'), 'sestra01');
+INSERT INTO sestra (rodne_cislo, meno, priezvisko, pohlavie, datum_narodenia, bydlisko, id_cislo_oddelenie, cislo_sestry, heslo, login) VALUES ('6957220138', 'Erika', 'Pomala', 'zena', '1969-12-31', 'Nerudova 17, Bruntal', '12', '02', SHA1('sestra02heslo'), 'sestra02');
+INSERT INTO sestra (rodne_cislo, meno, priezvisko, pohlavie, datum_narodenia, bydlisko, id_cislo_oddelenie, cislo_sestry, heslo, login) VALUES ('7455140055', 'Alena', 'Novakova','zena', '1974-05-31', 'Kolejni 2 Praha', '12', '02', SHA1('sestra03heslo'), 'sestra03');
+
+INSERT INTO lekar(login,heslo,rodne_cislo, meno, priezvisko, titul, datum_narodenia, pohlavie, trvale_bydlisko, specializacia) VALUES ('doktor00',SHA1('doktor00heslo'),9406150017, 'Michal', 'Mucha', 'MuDr', '1994-04-10', 'muz', 'Mlyny 12, Kladno', 'Endokrynologia');
+INSERT INTO lekar(login,heslo,rodne_cislo,meno, priezvisko, titul, datum_narodenia, pohlavie, trvale_bydlisko, specializacia) VALUES ('doktor01',SHA1('doktor01heslo'),8001100206, 'Ivan', 'Vesely', 'MuDr', '1980-05-10', 'muz', 'Panska 1202, Plzen', 'Chirurgia');
+INSERT INTO lekar(login,heslo,rodne_cislo, meno, priezvisko, titul, datum_narodenia, pohlavie, trvale_bydlisko, specializacia) VALUES ('doktor02',SHA1('doktor02heslo'),6805190546, 'Jan', 'Ostrovid', 'MuDr', '1957-09-10', 'muz', 'Na kameni 45, Plzen', 'ORL');
+INSERT INTO lekar(login,heslo,rodne_cislo, meno, priezvisko, titul, datum_narodenia, pohlavie, trvale_bydlisko, specializacia) VALUES ('doktor03',SHA1('doktor03heslo'),6407300526, 'Milos', 'Okular', 'MuDr', '1964-12-10', 'muz', 'Pod mostem 7, Brno', 'Ocni');
+INSERT INTO lekar(login,heslo, rodne_cislo,meno, priezvisko, titul, datum_narodenia, pohlavie, trvale_bydlisko, specializacia) VALUES ('doktor04',SHA1('doktor04heslo'),8510220851, 'Petr', 'Srdecný', 'MuDr', '1940-07-10', 'muz', 'Klusackova 46, Brno', 'Kardiologia');
+INSERT INTO lekar(login,heslo,rodne_cislo, meno, priezvisko, titul, datum_narodenia, pohlavie, trvale_bydlisko, specializacia) VALUES ('doktor05',SHA1('doktor05heslo'),8955050203, 'Lucia', 'Silna', 'MuDr', '1970-12-25', 'zena', 'Kounicova 400, Brno', 'Kardiochirurgia');
+
+
+INSERT INTO pracuje_na (uvazok, telefon, rodne_cislo_lekar, id_cislo_oddelenie) VALUES ('Trvaly', 0907156221, 8001100206, 10);
+INSERT INTO pracuje_na (uvazok, telefon, rodne_cislo_lekar, id_cislo_oddelenie) VALUES ('Trvaly', 0908236548, 6805190546, 11);
+INSERT INTO pracuje_na (uvazok, telefon, rodne_cislo_lekar, id_cislo_oddelenie) VALUES ('Polovicny', 0905622548, 6407300526, 11);
+INSERT INTO pracuje_na (uvazok, telefon, rodne_cislo_lekar, id_cislo_oddelenie) VALUES ('DPC', 0905622545, 8510220851, 12);
+INSERT INTO pracuje_na (uvazok, telefon, rodne_cislo_lekar, id_cislo_oddelenie) VALUES ('DPP', 0908462545, 8955050203, 12);
+
+INSERT INTO pacient(rodne_cislo, meno, priezvisko, datum_narodenia, pohlavie, trvale_bydlisko, alergie, rodne_cislo_lekar) VALUES (9656120507, 'Simona', 'Pallarikova', '1992-05-05','zena', 'Videnska 21, Brno', 'arasidy, mlieko', 8955050203);
+INSERT INTO pacient(rodne_cislo, meno, priezvisko, datum_narodenia, pohlavie, trvale_bydlisko, alergie, rodne_cislo_lekar) VALUES (8758191959, 'KatarIna', 'Sabolova', '1989-01-10','zena', 'Kounicova 412, Brno-Cejl', 'maso', 6407300526);
+INSERT INTO pacient(rodne_cislo, meno, priezvisko, datum_narodenia, pohlavie, trvale_bydlisko, alergie, rodne_cislo_lekar) VALUES (9405094424, 'Adam', 'Dudek', '1985-08-20','muz', 'Kounicova 412, Policka', '', 8510220851);
+INSERT INTO pacient(rodne_cislo, meno, priezvisko, datum_narodenia, pohlavie, trvale_bydlisko, alergie, rodne_cislo_lekar) VALUES (9609269945, 'Adam', 'Pokorny', '1970-12-11','muz', 'Pivni 69, Policka', 'pivo', 8510220851);
+INSERT INTO pacient(rodne_cislo, meno, priezvisko, datum_narodenia, pohlavie, trvale_bydlisko, alergie, rodne_cislo_lekar) VALUES (9204127647, 'Ivan', 'Drzy', '1965-04-12','muz', 'Tovarni 45, Kladno', 'lepok', 6805190546);
+INSERT INTO pacient(rodne_cislo, meno, priezvisko, datum_narodenia, pohlavie, trvale_bydlisko, alergie, rodne_cislo_lekar) VALUES (8805122755, 'Norbert', 'Novak', '1995-07-11','muz', 'Sportovni 4, Kosice', 'med', 8001100206);
+INSERT INTO pacient(rodne_cislo, meno, priezvisko, datum_narodenia, pohlavie, trvale_bydlisko, alergie, rodne_cislo_lekar) VALUES (8706127881, 'JordAn', 'Slany', '1999-06-10','muz', 'Sladkeho 81, Bratislava', 'vodka', 8510220851);
+
+INSERT INTO hospitalizacia (id_cislo, datum_prijatia, datum_prepustenia, rodne_cislo_pacient, id_cislo_oddelenie) VALUES (36,'2015-02-15' ,'2015-02-20',9656120507,10);
+INSERT INTO hospitalizacia (id_cislo, datum_prijatia, datum_prepustenia, rodne_cislo_pacient, id_cislo_oddelenie) VALUES (23,'2014-12-12' ,'2014-12-22' ,8758191959,10);
+INSERT INTO hospitalizacia (id_cislo, datum_prijatia, datum_prepustenia, rodne_cislo_pacient, id_cislo_oddelenie) VALUES (42,'2014-05-30' ,'2014-06-2' ,9405094424,12);
+INSERT INTO hospitalizacia (id_cislo, datum_prijatia, datum_prepustenia, rodne_cislo_pacient, id_cislo_oddelenie) VALUES (14,'2014-05-01' ,'2014-05-04' ,9609269945,12);
+INSERT INTO hospitalizacia (id_cislo, datum_prijatia, datum_prepustenia, rodne_cislo_pacient, id_cislo_oddelenie) VALUES (28,'2015-03-25' ,'2015-03-29' ,9204127647,11);
+INSERT INTO hospitalizacia (id_cislo, datum_prijatia, datum_prepustenia, rodne_cislo_pacient, id_cislo_oddelenie) VALUES (43,'2015-01-13' ,'2015-01-15' ,8805122755,12);
+INSERT INTO hospitalizacia (id_cislo, datum_prijatia, datum_prepustenia, rodne_cislo_pacient, id_cislo_oddelenie) VALUES (49,'2015-02-23' ,'2015-02-28' ,8706127881,11);
+
+
+INSERT INTO vysetrenie(id_cislo, datum, id_cislo_hospitalizacia) VALUES (464,'2015-02-16',36);
+INSERT INTO vysetrenie(id_cislo, datum, id_cislo_hospitalizacia) VALUES (522,'2014-12-13',23);
+INSERT INTO vysetrenie(id_cislo, datum, id_cislo_hospitalizacia) VALUES (462,'2014-05-31',42);
+INSERT INTO vysetrenie(id_cislo, datum, id_cislo_hospitalizacia) VALUES (995,'2014-05-02',14);
+INSERT INTO vysetrenie(id_cislo, datum, id_cislo_hospitalizacia) VALUES (505,'2015-03-26',28);
+INSERT INTO vysetrenie(id_cislo, datum, id_cislo_hospitalizacia) VALUES (463,'2015-03-26',28);
+INSERT INTO vysetrenie(id_cislo, datum, id_cislo_hospitalizacia) VALUES (465,'2015-04-28',28);
+
+INSERT INTO liek(cislo_sarze, nazov, druh, ucinna_latka, mnozstvo_ucinnej_latky, kontraindikacie) VALUES (1221325, 'paralen', 'tablety', 'paracetamolum', 500, '');
+INSERT INTO liek(cislo_sarze, nazov, druh, ucinna_latka, mnozstvo_ucinnej_latky, kontraindikacie) VALUES (8452321, 'ibalgin', 'tablety', 'ibubrofen', 250, 'trufen');
+INSERT INTO liek(cislo_sarze, nazov, druh, ucinna_latka, mnozstvo_ucinnej_latky, kontraindikacie) VALUES (6546842, 'panadol forte', 'roztok', 'panadolium', 5000, 'cuprumium');
+INSERT INTO liek(cislo_sarze, nazov, druh, ucinna_latka, mnozstvo_ucinnej_latky, kontraindikacie) VALUES (6842225, 'flediol', 'kapsule', 'flediolum', 2, 'paralen, ibalgin');
+
+
+INSERT INTO uziva(kedy, kolko_krat, pocet_tabliet, rodne_cislo_pacient, cislo_sarze) VALUES ('rano', 3, 2, 9656120507, 1221325);
+INSERT INTO uziva(kedy, kolko_krat, pocet_tabliet, rodne_cislo_pacient, cislo_sarze) VALUES ('vecer', 5, 4, 9656120507, 8452321);
+INSERT INTO uziva(kedy, kolko_krat, pocet_tabliet, rodne_cislo_pacient, cislo_sarze) VALUES ('obed', 12, 2, 9405094424, 6842225);
+INSERT INTO uziva(kedy, kolko_krat, pocet_tabliet, rodne_cislo_pacient, cislo_sarze) VALUES ('vecer', 1, 1, 9204127647, 6546842);
+INSERT INTO uziva(kedy, kolko_krat, pocet_tabliet, rodne_cislo_pacient, cislo_sarze) VALUES ('rano', 6, 3, 8805122755, 1221325);
+INSERT INTO uziva(kedy, kolko_krat, pocet_tabliet, rodne_cislo_pacient, cislo_sarze) VALUES ('obed', 9, 1, 8706127881, 1221325);
+
+INSERT INTO platene (sposob_platby, id_cislo_vysetrenie) VALUES ('hotovost', 464);
+INSERT INTO platene (sposob_platby, id_cislo_vysetrenie) VALUES ('karta', 522);
+INSERT INTO platene (sposob_platby, id_cislo_vysetrenie) VALUES ('hotovost', 462);
+INSERT INTO platene (sposob_platby, id_cislo_vysetrenie) VALUES ('karta', 463);
+INSERT INTO platene (sposob_platby, id_cislo_vysetrenie) VALUES ('karta', 465);
+
+INSERT INTO neplatene(cislo_poistovne, id_cislo_vysetrenie) VALUES (41456879, 995);
+INSERT INTO neplatene(cislo_poistovne, id_cislo_vysetrenie) VALUES (43565472, 505);
+
